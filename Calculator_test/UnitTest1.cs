@@ -1,39 +1,61 @@
 using NUnit.Framework;
 
-namespace Calculator_test
+namespace Tests;
+
+[TestFixture]
+public class Tests
 {
-    [TestFixture]
-    public class Tests : ITests
+    private myCalc.Calculator uut;
+
+    [SetUp]
+    public void Setup()
     {
-        private myCalc.Calculator uut;
-        [SetUp]
-        public void Setup()
-        {
-            //bliver kaldt før hver eneste test 
-
-            uut = new myCalc.Calculator();
-        }
-
-        [Test]
-        public void Test1()
-        {
-            //Arrange
-            var uut = new myCalc.Calculator();
-
-            //Act
-            //lav evt metodekald her sådan at man kan tjekke en property/attribut i assert 
-
-            //Assert
-            Assert.That(uut.Add(2.5, 2.5), Is.EqualTo(5));
-        }
-
-        [TestCase(5,2,3)]
-        [Test]
-        public void Test2(int a, int b, int c)
-        {
-            Assert.AreEqual(a,uut.Add(b,c));
-        }
+        uut = new myCalc.Calculator();
+    }
 
 
+    [TestCase(90.5,45.25,45.25)]
+    [TestCase(-45.5, -90.5, 45)]
+    [TestCase(-180, -90, -90)]
+    [Test]
+    public void Test_Add(double a, double b, double c)
+    {
+
+        Assert.AreEqual(a,uut.Add(b,c));
+    }
+
+
+
+    [TestCase(10.5, 40.75, 30.25)]
+    [TestCase(-300, -200, 100)]
+    [TestCase(0, -90, -90)]
+    [Test]
+    public void Test_Subtract(double a, double b, double c)
+    {
+        Assert.AreEqual(a,uut.Subtract(b,c));
+    }
+
+
+    [TestCase(10, 2, 5)]
+    [TestCase(-50, -5, 10)]
+    [TestCase(50, -5, -10)]
+    [Test]
+    public void Test_Multiply(double a, double b, double c)
+    {
+
+        Assert.AreEqual(a,uut.Multiply(b,c));
+    }
+
+
+
+    [TestCase(9, 3, 2)]
+    [TestCase(9, -3, 2)]
+    [TestCase(9, 3, -2)]
+    [Test]
+    public void Test_Power(double a, double b, double c)
+    {
+        var uut = new myCalc.Calculator();
+
+        Assert.AreEqual(9,uut.Power(3,2));
     }
 }
