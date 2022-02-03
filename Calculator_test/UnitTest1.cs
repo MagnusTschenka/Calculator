@@ -20,11 +20,21 @@ public class Tests
     [Test]
     public void Test_Add(double a, double b, double c)
     {
-
+        
         Assert.AreEqual(a,uut.Add(b,c));
     }
 
-
+    [TestCase(50.25,45.25)]
+    [TestCase(-85.5, -90.5)] 
+    //[TestCase(-180, -90)]
+    [Test]
+    public void Test_Add_Overloaded_With_Accumulator(double expected, double argument)
+    {
+        uut.Add(2,3);
+        Assert.AreEqual(expected,uut.Add(argument));
+        uut.Clear();
+        Assert.AreEqual(45.25,uut.Add(45.25));
+    }
 
     [TestCase(10.5, 40.75, 30.25)]
     [TestCase(-300, -200, 100)]
