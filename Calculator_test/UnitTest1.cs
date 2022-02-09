@@ -16,7 +16,7 @@ public class Tests
     
     [TestCase(90.5,45.25,45.25)]
     [TestCase(-45.5, -90.5, 45)]
-    [TestCase(-180, -90, -90)] 
+    [TestCase(-181, -90, -90)] 
     [Test]
     public void Test_Add(double a, double b, double c)
     {
