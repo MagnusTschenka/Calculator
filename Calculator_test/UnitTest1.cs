@@ -25,15 +25,14 @@ public class Tests
     }
 
     [TestCase(50.25,45.25)]
-    [TestCase(-85.5, -90.5)] 
-    //[TestCase(-180, -90)]
+    [TestCase(-85.5, -90.5)]
     [Test]
     public void Test_Add_Overloaded_With_Accumulator(double expected, double argument)
     {
-        uut.Add(2,3);
-        Assert.AreEqual(expected,uut.Add(argument));
-        uut.Clear();
-        Assert.AreEqual(45.25,uut.Add(45.25));
+        uut.Add(2,3); //Sætter accumulator til 5
+        Assert.AreEqual(expected,uut.Add(argument)); //Tjekker om accumaltor på 5 anvendes fra start
+        uut.Clear(); //Tjekker om accumulator kan cleares
+        Assert.AreEqual(45.25,uut.Add(45.25)); //Tjekker om accumulator er 0 (accumulator(0) + 45.25) 
     }
 
     [TestCase(10.5, 40.75, 30.25)]
@@ -45,6 +44,16 @@ public class Tests
         Assert.AreEqual(a,uut.Subtract(b,c));
     }
 
+    [TestCase(5.5,20)]
+    [TestCase(85.5, -60)]
+    [Test]
+    public void Test_Subtract_Overloaded_With_Accumulator(double expected, double argument)
+    {
+        uut.Subtract(30.5,5); //Sætter accumulator til 25.5
+        Assert.AreEqual(expected,uut.Subtract(argument)); //Tjekker om accumaltor på 25.5 anvendes fra start
+        uut.Clear(); //Tjekker om accumulator kan cleares
+        Assert.AreEqual(-45.25,uut.Subtract(45.25)); //Tjekker om accumulator er 0 (accumulator(0) - 45.25) 
+    }
 
     [TestCase(10, 2, 5)]
     [TestCase(-50, -5, 10)]
@@ -56,6 +65,16 @@ public class Tests
         Assert.AreEqual(a,uut.Multiply(b,c));
     }
 
+    [TestCase(22,5.5)]
+    [TestCase(-34, -8.5)]
+    [Test]
+    public void Test_Multiply_Overloaded_With_Accumulator(double expected, double argument)
+    {
+        uut.Multiply(2,2); //Sætter accumulator til 4
+        Assert.AreEqual(expected,uut.Multiply(argument)); //Tjekker om accumaltor på 25.5 anvendes fra start
+        uut.Clear(); //Tjekker om accumulator kan cleares
+        Assert.AreEqual(0,uut.Multiply(argument)); //Tjekker om accumulator er 0 (accumulator(0) - 45.25) 
+    }
 
 
     [TestCase(9, 3, 2)]
