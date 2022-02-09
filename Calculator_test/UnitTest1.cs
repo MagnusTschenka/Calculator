@@ -16,7 +16,7 @@ public class Tests
     
     [TestCase(90.5,45.25,45.25)]
     [TestCase(-45.5, -90.5, 45)]
-    [TestCase(-180, -90, -90)] //change back to -180
+    [TestCase(-180, -90, -90)] 
     [Test]
     public void Test_Add(double a, double b, double c)
     {
@@ -69,3 +69,4 @@ public class Tests
         Assert.AreEqual(9,uut.Power(3,2));
     }
 }
+
