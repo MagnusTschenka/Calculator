@@ -28,6 +28,7 @@ public class Tests
 
     [TestCase(50.25,45.25)]
     [TestCase(-85.5, -90.5)]
+    [TestCase(3, -2)]
     [Test]
     public void Test_Add_Overloaded_With_Accumulator(double expected, double argument)
     {
@@ -48,6 +49,7 @@ public class Tests
 
     [TestCase(5.5,20)]
     [TestCase(85.5, -60)]
+    [TestCase(-55, 80.5)]
     [Test]
     public void Test_Subtract_Overloaded_With_Accumulator(double expected, double argument)
     {
@@ -69,6 +71,7 @@ public class Tests
 
     [TestCase(22,5.5)]
     [TestCase(-34, -8.5)]
+    [TestCase(276, 69)]
     [Test]
     public void Test_Multiply_Overloaded_With_Accumulator(double expected, double argument)
     {
@@ -90,6 +93,7 @@ public class Tests
 
     [TestCase(64, 3)]
     [TestCase(0.015625, -3)]
+    [TestCase(55.715236050951937,2.9)]
     [Test]
     public void Test_Power_Overloaded(double a, double b)
     {
@@ -126,6 +130,7 @@ public class Tests
     
     [TestCase(1,4)]
     [TestCase(-1,-4)]
+    [TestCase(0.5,8)]
     [Test]
     public void Test_Divide_Overloaded_With_Accumulator(double expected, double argument)
     {

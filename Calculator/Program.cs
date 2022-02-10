@@ -59,7 +59,7 @@ namespace myCalc
         
         public double Power(double exp)
         {
-            if ((exp % 1 != 0))
+            if (Accumulator < 0 && (exp % 1 != 0))
             {
                 throw new ArgumentException();
             }
