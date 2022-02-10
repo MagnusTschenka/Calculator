@@ -59,6 +59,26 @@ namespace myCalc
             return Accumulator;
         }
 
+        public double Divide(double a, double b)
+        {
+            if (b == 0)
+            {
+                throw new DivideByZeroException();
+            }
+            return a/b;
+        }
+        
+        public double Divide(double a)
+        {
+            if (a == 0)
+            {
+                throw new DivideByZeroException();
+            }
+
+            Accumulator =  Accumulator / a;
+            return Accumulator;
+        }
+        
         public void Clear()
         {
             Accumulator = 0;

@@ -1,4 +1,6 @@
+using System;
 using NUnit.Framework;
+using NUnit.Framework.Constraints;
 
 namespace Tests;
 
@@ -79,13 +81,50 @@ public class Tests
 
     [TestCase(9, 3, 2)]
     [TestCase(9, -3, 2)]
-    [TestCase(9, 3, -2)]
+    [TestCase(0.1111111111111111, 3, -2)]
+    //[TestCase(0, -2, 2.2)] //NaN -> kompleks nr
     [Test]
     public void Test_Power(double a, double b, double c)
     {
-        var uut = new myCalc.Calculator();
-
-        Assert.AreEqual(9,uut.Power(3,2));
+        Assert.AreEqual(a,uut.Power(b,c));
     }
+
+
+    [TestCase(1, 9.5, 9.5)]
+    [TestCase(-0.12,-6,50)]
+    [TestCase(3.125,-12.5,-4)]
+    [Test]
+    public void Test_Divide(double a, double b, double c)
+    {
+        Assert.AreEqual(a, uut.Divide(b,c));
+    }
+    
+    
+    [TestCase(1,4)]
+    [TestCase(-1,-4)]
+    [Test]
+    public void Test_Divide_Overloaded_With_Accumulator(double expected, double argument)
+    {
+        uut.Add(2,2); //Sætter accumulator til 4
+        Assert.AreEqual(expected,uut.Divide(argument)); //Tjekker om accumaltor på 4 anvendes fra start
+        uut.Clear(); //Tjekker om accumulator kan cleares
+        Assert.AreEqual(0,uut.Divide(argument)); //Tjekker om accumulator er 0 (accumulator(0) - 45.25) 
+    }
+    
+    
+    [TestCase(1,0)]
+    [Test]
+    public void Test_Divide_Throws_DivideByZeroException(double a, double b)
+    {
+        Assert.That( () => uut.Divide(a,b), Throws.TypeOf<DivideByZeroException>());
+    }
+    
+    [TestCase(0)]
+    [Test]
+    public void Test_Divide_Overloaded_Throws_DivideByZeroException(double a)
+    {
+        Assert.That( () => uut.Divide(a), Throws.TypeOf<DivideByZeroException>());
+    }
+    
 }
 
