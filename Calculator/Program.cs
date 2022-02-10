@@ -49,12 +49,20 @@ namespace myCalc
 
         public double Power(double x, double exp)
         {
-    
+            if (x < 0 && (exp % 1 != 0))
+            {
+                throw new ArgumentException();
+            }
+            Accumulator = Math.Pow(x, exp);
             return Math.Pow(x, exp);
         }
         
         public double Power(double exp)
         {
+            if ((exp % 1 != 0))
+            {
+                throw new ArgumentException();
+            }
             Accumulator = Math.Pow(Accumulator, exp);
             return Accumulator;
         }
@@ -65,6 +73,7 @@ namespace myCalc
             {
                 throw new DivideByZeroException();
             }
+            Accumulator = a / b;
             return a/b;
         }
         

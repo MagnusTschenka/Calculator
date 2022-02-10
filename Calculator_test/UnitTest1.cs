@@ -82,14 +82,38 @@ public class Tests
     [TestCase(9, 3, 2)]
     [TestCase(9, -3, 2)]
     [TestCase(0.1111111111111111, 3, -2)]
-    //[TestCase(0, -2, 2.2)] //NaN -> kompleks nr
     [Test]
     public void Test_Power(double a, double b, double c)
     {
         Assert.AreEqual(a,uut.Power(b,c));
     }
 
+    [TestCase(64, 3)]
+    [TestCase(0.015625, -3)]
+    [Test]
+    public void Test_Power_Overloaded(double a, double b)
+    {
+        uut.Add(2, 2);
+        Assert.AreEqual(a,uut.Power(b));
+    }
+    
+    [TestCase(-3, 2.2)] //NaN -> kompleks nr
+    [Test]
+    public void Test_Power_Exception(double a, double b)
+    {
+        Assert.That( () => uut.Power(a,b), Throws.TypeOf<ArgumentException>());
 
+    }
+    
+    [TestCase(2.2)]
+    [Test]
+    public void Test_Power_Overloaded_Exception(double a)
+    {
+        uut.Subtract(-2, 2);
+        Assert.That( () => uut.Power(a), Throws.TypeOf<ArgumentException>());
+    }
+    
+    
     [TestCase(1, 9.5, 9.5)]
     [TestCase(-0.12,-6,50)]
     [TestCase(3.125,-12.5,-4)]
