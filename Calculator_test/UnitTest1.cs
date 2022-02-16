@@ -75,10 +75,10 @@ public class Tests
     [Test]
     public void Test_Multiply_Overloaded_With_Accumulator(double expected, double argument)
     {
-        uut.Multiply(2,2); //Sætter accumulator til 4
-        Assert.AreEqual(expected,uut.Multiply(argument)); //Tjekker om accumaltor på 25.5 anvendes fra start
-        uut.Clear(); //Tjekker om accumulator kan cleares
-        Assert.AreEqual(0,uut.Multiply(argument)); //Tjekker om accumulator er 0 (accumulator(0) - 45.25) 
+        uut.Multiply(2,2); 
+        Assert.AreEqual(expected,uut.Multiply(argument)); 
+        uut.Clear();
+        Assert.AreEqual(0,uut.Multiply(argument));  
     }
 
 
@@ -134,10 +134,10 @@ public class Tests
     [Test]
     public void Test_Divide_Overloaded_With_Accumulator(double expected, double argument)
     {
-        uut.Add(2,2); //Sætter accumulator til 4
-        Assert.AreEqual(expected,uut.Divide(argument)); //Tjekker om accumaltor på 4 anvendes fra start
-        uut.Clear(); //Tjekker om accumulator kan cleares
-        Assert.AreEqual(0,uut.Divide(argument)); //Tjekker om accumulator er 0 (accumulator(0) - 45.25) 
+        uut.Add(2,2);
+        Assert.AreEqual(expected,uut.Divide(argument));
+        uut.Clear(); 
+        Assert.AreEqual(0,uut.Divide(argument)); 
     }
     
     
